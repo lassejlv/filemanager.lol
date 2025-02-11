@@ -10,6 +10,12 @@ A beautiful little file manager as an alternative to Finder on MacOS. Many likes
 - Easy to use
 - Writeen with love in mind ❤️
 
+*things i may wanna add later on*
+- Drag and drop files
+- Copy and paste files
+- Build in terminal (idk why but it could be cool haha)
+- A CLI?
+
 ## Installation
 
 Download the latest version at the [releases page](https://github.com/lassejlv/filemanager.lol)
