@@ -1,4 +1,6 @@
-import { SiCss3, SiGo, SiHtml5, SiJavascript, SiJson, SiMarkdown, SiPython, SiRust, SiTypescript } from "react-icons/si";
+import { SiCss3, SiGo, SiHtml5, SiJavascript, SiJson, SiMarkdown, SiPython, SiRust, SiTypescript, SiYaml, SiDocker, SiPrisma } from "react-icons/si";
+import { BiSolidImage } from "react-icons/bi";
+
 import { File } from "lucide-react";
 
 
@@ -53,6 +55,26 @@ const icons: IconObject[] = [
     name: "JSON",
     extionsions: ["json", "json5", "jsonb", "jsonc"],
     icon: <SiJson />
+  },
+  {
+    name: "YAML",
+    extionsions: ["yaml", "yml"],
+    icon: <SiYaml />
+  },
+  {
+    name: "Docker",
+    extionsions: ["dockerfile", "Dockerfile", "docker-compose.yml", "docker-compose.yaml", "compose.yaml", "compose.yml", ".dockerignore"],
+    icon: <SiDocker />
+  },
+  {
+    name: "Image",
+    extionsions: ["png", "jpg", "jpeg", "gif", "webp", "svg", "tiff", "bmp"],
+    icon: <BiSolidImage />
+  },
+  {
+    name: "Prisma",
+    extionsions: ["prisma"],
+    icon: <SiPrisma />
   }
 ]
 
