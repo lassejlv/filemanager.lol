@@ -28,11 +28,14 @@ async function list_folders_files(path: string): Promise<FileObject[]> {
   return await invoke("list_folders_files", { path }) as FileObject[]
 }
 
+async function build_breadcrumbs(path: string): Promise<string[]> {
+  return await invoke("build_breadcrumbs", { path }) as string[]
+}
 
 function RouteComponent() {
 
 
-  const { data: objects, isLoading: loading, error, refetch } = useQuery({
+  const { data: objects, isLoading: loading, isFetching, isRefetching, error, refetch } = useQuery({
     queryKey: ["list_folders_files", GetCurrentPath()],
     queryFn: async () => {
 
@@ -40,6 +43,10 @@ function RouteComponent() {
         console.warn("No current folder path")
         return []
       }
+
+      console.log(await build_breadcrumbs(GetCurrentPath() || ""))
+
+
 
       console.info(`Listing folders and files in ${GetCurrentPath() || "Unknown path"}`)
       return list_folders_files(GetCurrentPath() || "");
@@ -93,9 +100,9 @@ function RouteComponent() {
             variant="ghost"
             size="icon"
             onClick={() => refetch()}
-            disabled={loading}
+            disabled={isFetching || loading || isRefetching}
           >
-            <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`h-4 w-4 ${isRefetching ? 'animate-spin' : ''}`} />
           </Button>
         </div>
       </div>

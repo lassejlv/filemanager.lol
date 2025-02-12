@@ -1,38 +1,37 @@
-const sharp = require('sharp');
-const path = require('path');
+const sharp = require('sharp')
+const path = require('path')
 
-// First install sharp using: npm install sharp
+// Just a small little script to make my icons work in tauri (and yes generated using AI, thats why its common.js)
 
 async function convertToRGBA(inputPath) {
-  const fileName = path.basename(inputPath);
-  const outputPath = `${path.dirname(inputPath)}/converted_${fileName}`;
+  const fileName = path.basename(inputPath)
+  const outputPath = `${path.dirname(inputPath)}/converted_${fileName}`
 
   try {
     await sharp(inputPath)
-      .ensureAlpha()        // Ensure alpha channel exists
+      .ensureAlpha()
       .png({
-        force: true,      // Force PNG format
-        compressionLevel: 9
+        force: true,
+        compressionLevel: 9,
       })
-      .toFile(outputPath);
+      .toFile(outputPath)
 
-    console.log(`Successfully converted image to RGBA PNG: ${outputPath}`);
+    console.log(`Successfully converted image to RGBA PNG: ${outputPath}`)
   } catch (error) {
-    console.error('Error converting image:', error);
+    console.error('Error converting image:', error)
   }
 }
 
-// If running directly from command line
 if (require.main === module) {
-  const imagePath = process.argv[2];
+  const imagePath = process.argv[2]
 
   if (!imagePath) {
-    console.error('Please provide an image path');
-    console.log('Usage: node convert.js <path-to-image>');
-    process.exit(1);
+    console.error('Please provide an image path')
+    console.log('Usage: bun index.js <path-to-image>')
+    process.exit(1)
   }
 
-  convertToRGBA(imagePath);
+  convertToRGBA(imagePath)
 }
 
-module.exports = convertToRGBA;
+module.exports = convertToRGBA

@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  publish-writee:
+  publish:
     # Check if commit message ends with [release]
     if: contains(github.event.head_commit.message, '[release]')
     permissions:

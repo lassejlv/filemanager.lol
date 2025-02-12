@@ -49,14 +49,18 @@ fn list_folders_files(path: &str) -> Vec<FileObject> {
         let last_modified = last_modified
             .duration_since(std::time::SystemTime::UNIX_EPOCH)
             .unwrap();
-        let last_modified =
-            chrono::NaiveDateTime::from_timestamp(last_modified.as_secs() as i64, 0);
+        let last_modified = chrono::DateTime::from_timestamp(last_modified.as_secs() as i64, 0)
+            .unwrap()
+            .naive_local();
+
         let last_modified = last_modified.format("%Y-%m-%d %H:%M:%S").to_string();
         let created = metadata.created().unwrap();
         let created = created
             .duration_since(std::time::SystemTime::UNIX_EPOCH)
             .unwrap();
-        let created = chrono::NaiveDateTime::from_timestamp(created.as_secs() as i64, 0);
+        let created = chrono::DateTime::from_timestamp(created.as_secs() as i64, 0)
+            .unwrap()
+            .naive_local();
         let created = created.format("%Y-%m-%d %H:%M:%S").to_string();
 
         files.push(FileObject {
