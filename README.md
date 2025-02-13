@@ -5,7 +5,7 @@ A beautiful little file manager as an alternative to Finder on MacOS. Many likes
 ## Features
 
 - Browse files and folders
-- Fast and leaightweight
+- Fast and lightweight
 - Great icons for folders and files
 - Easy to use
 - Writeen with love in mind ❤️
